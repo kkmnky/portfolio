@@ -13,10 +13,12 @@
     "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.7",
     "@astrojs/cloudflare": "^13.1.1",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.4",
     "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3",
     "wrangler": "^4.73.0"
   }
 }

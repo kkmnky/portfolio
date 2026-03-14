@@ -1,12 +1,5 @@
 ---
 import { activities } from '../data/activities'
-
-// 年ごとにグループ化
-const grouped = activities.reduce<Record<number, typeof activities>>((acc, a) => {
-  ;(acc[a.year] ??= []).push(a)
-  return acc
-}, {})
-const years = Object.keys(grouped).map(Number).sort((a, b) => b - a)
 ---
 
 <section id="activities" class="py-24 bg-slate-50">
@@ -22,7 +15,10 @@ const years = Object.keys(grouped).map(Number).sort((a, b) => b - a)
         >
           <div class="flex items-start justify-between mb-3">
             <span class="text-2xl font-bold text-gray-100">{activity.year}</span>
-            <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-sky-50 text-sky-600">
+            <span
+              class="text-xs font-medium px-2.5 py-1 rounded-full"
+              style="background-color: var(--pink-light); color: var(--pink-dark)"
+            >
               {activity.role}
             </span>
           </div>

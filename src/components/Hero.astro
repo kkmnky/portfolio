@@ -2,28 +2,47 @@
 ---
 
 <section id="hero" class="min-h-screen flex items-center bg-white">
-  <div class="max-w-5xl mx-auto px-6 py-32">
-    <p class="text-sm font-medium tracking-widest text-sky-600 uppercase mb-4 fade-up">Site Reliability Engineer</p>
-    <h1 class="text-6xl font-bold text-gray-900 mb-6 fade-up" style="transition-delay: 0.1s">
-      かみけん
-    </h1>
-    <p class="text-xl text-gray-500 max-w-xl leading-relaxed mb-10 fade-up" style="transition-delay: 0.2s">
-      オンプレからクラウドネイティブ、SRE へ。<br />
-      可観測性と信頼性で、サービスの持続可能な成長を支えます。
-    </p>
-    <div class="flex items-center gap-4 fade-up" style="transition-delay: 0.3s">
-      <a
-        href="#works"
-        class="inline-flex items-center gap-2 bg-sky-600 text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-sky-700 transition-colors"
-      >
-        Works を見る
-      </a>
-      <a
-        href="#contact"
-        class="inline-flex items-center gap-2 text-sm font-medium text-gray-600 px-5 py-2.5 rounded-lg border border-gray-200 hover:border-sky-300 hover:text-sky-600 transition-colors"
-      >
-        Contact
-      </a>
+  <div class="max-w-5xl mx-auto px-6 py-32 w-full">
+    <div class="flex flex-col md:flex-row items-center gap-16">
+
+      <!-- Text -->
+      <div class="flex-1">
+        <p class="text-sm font-medium tracking-widest uppercase mb-4 fade-up" style="color: var(--purple)">
+          Site Reliability Engineer
+        </p>
+        <h1 class="text-6xl font-bold text-gray-900 mb-6 fade-up" style="transition-delay: 0.1s">
+          かみけん
+        </h1>
+        <p class="text-xl text-gray-400 max-w-md leading-relaxed mb-10 fade-up" style="transition-delay: 0.2s">
+          オンプレからクラウドネイティブ、SRE へ。<br />
+          可観測性と信頼性で、サービスの持続可能な成長を支えます。
+        </p>
+        <div class="flex items-center gap-4 fade-up" style="transition-delay: 0.3s">
+          <a
+            href="#works"
+            class="inline-flex items-center gap-2 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-opacity hover:opacity-85"
+            style="background-color: var(--purple)"
+          >
+            Works を見る
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-lg border border-gray-200 text-gray-600 hover:border-[var(--purple)] hover:text-[var(--purple)] transition-colors"
+          >
+            Contact
+          </a>
+        </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="shrink-0 fade-up" style="transition-delay: 0.2s">
+        <img
+          src="/logo.jpg"
+          alt="kmnky icon"
+          class="w-64 h-64 object-contain"
+        />
+      </div>
+
     </div>
   </div>
 </section>

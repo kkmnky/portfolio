@@ -1,4 +1,15 @@
 ---
+const blogUrl = 'https://kmnky.dev/'
+
+let ogImage = ''
+let ogDescription = ''
+
+try {
+  const res = await fetch(blogUrl)
+  const html = await res.text()
+  ogImage       = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/)?.[1] ?? ''
+  ogDescription = html.match(/<meta[^>]+property="og:description"[^>]+content="([^"]+)"/)?.[1] ?? ''
+} catch {}
 ---
 
 <section id="blog" class="py-24 bg-white">
@@ -7,28 +18,29 @@
     <p class="text-gray-400 text-sm mb-16 fade-up">技術ブログ</p>
 
     <a
-      href="https://kmnky.dev/"
+      href={blogUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="group flex items-center justify-between bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-2xl p-8 transition-all duration-300 fade-up"
+      class="group flex flex-col sm:flex-row items-center gap-8 bg-white border border-gray-100 shadow-sm hover:shadow-md rounded-2xl p-8 transition-all duration-300 fade-up"
       onmouseover="this.style.borderColor='var(--purple)'"
       onmouseout="this.style.borderColor=''"
     >
-      <div>
-        <p class="text-xs font-medium mb-1 tracking-wide" style="color: var(--purple)">BLOG</p>
-        <h3 class="text-xl font-bold text-gray-900 group-hover:text-(--purple) transition-colors">
-          kmnky.dev
-        </h3>
-        <p class="text-sm text-gray-400 mt-1">SRE・クラウドネイティブ・可観測性についての技術記事</p>
+      <div class="flex items-center justify-between gap-6 flex-1">
+        <div>
+          <p class="text-xs font-medium mb-1 tracking-wide" style="color: var(--purple)">BLOG</p>
+          <h3 class="text-xl font-bold text-gray-900 group-hover:text-(--purple) transition-colors mb-2">
+            kmnky.dev
+          </h3>
+          {ogDescription && (
+            <p class="text-sm text-gray-400 leading-relaxed">{ogDescription}</p>
+          )}
+        </div>
       </div>
-      <svg
-        class="w-6 h-6 text-gray-300 group-hover:translate-x-1 transition-all duration-300 shrink-0 ml-6"
-        style=""
-        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        onmouseover=""
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-      </svg>
+      {ogImage && (
+        <div class="shrink-0">
+          <img src={ogImage} alt="kmnky.dev" class="w-64 h-36 object-cover rounded-xl" />
+        </div>
+      )}
     </a>
   </div>
 </section>

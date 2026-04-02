@@ -7,12 +7,69 @@
       <img src="/logo.jpg" alt="kmnky logo" class="w-8 h-8 object-contain" />
       <span class="text-base">kmnky</span>
     </a>
-    <ul class="flex items-center gap-5 text-sm text-gray-500">
+
+    <!-- Desktop menu -->
+    <ul class="hidden md:flex items-center gap-5 text-sm text-gray-500">
       <li><a href="#career"     class="hover:text-(--purple) transition-colors">Career</a></li>
       <li><a href="#works"      class="hover:text-(--teal) transition-colors">Works</a></li>
       <li><a href="#activities" class="hover:text-(--pink) transition-colors">Activities</a></li>
       <li><a href="#blog"       class="hover:text-(--purple) transition-colors">Blog</a></li>
       <li><a href="#contact"    class="hover:text-(--purple) transition-colors">Contact</a></li>
     </ul>
+
+    <!-- Hamburger button (mobile) -->
+    <button
+      id="menu-btn"
+      class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+    >
+      <span class="hamburger-line block w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
+      <span class="hamburger-line block w-6 h-0.5 bg-gray-700 transition-all duration-300"></span>
+    </button>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+    <ul class="flex flex-col py-4 px-6 gap-4 text-sm text-gray-500">
+      <li><a href="#career"     class="hover:text-(--purple) transition-colors">Career</a></li>
+      <li><a href="#works"      class="hover:text-(--teal) transition-colors">Works</a></li>
+      <li><a href="#activities" class="hover:text-(--pink) transition-colors">Activities</a></li>
+      <li><a href="#blog"       class="hover:text-(--purple) transition-colors">Blog</a></li>
+      <li><a href="#contact"    class="hover:text-(--purple) transition-colors">Contact</a></li>
+    </ul>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('menu-btn')!
+  const menu = document.getElementById('mobile-menu')!
+  const lines = btn.querySelectorAll<HTMLElement>('.hamburger-line')
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('hidden') === false
+    btn.setAttribute('aria-expanded', String(isOpen))
+    // Animate to X
+    if (isOpen) {
+      lines[0].style.transform = 'translateY(8px) rotate(45deg)'
+      lines[1].style.opacity = '0'
+      lines[2].style.transform = 'translateY(-8px) rotate(-45deg)'
+    } else {
+      lines[0].style.transform = ''
+      lines[1].style.opacity = ''
+      lines[2].style.transform = ''
+    }
+  })
+
+  // Close menu when a link is clicked
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden')
+      btn.setAttribute('aria-expanded', 'false')
+      lines[0].style.transform = ''
+      lines[1].style.opacity = ''
+      lines[2].style.transform = ''
+    })
+  })
+</script>
